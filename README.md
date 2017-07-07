@@ -2,17 +2,17 @@
 
 Sample Wake on lan on Web interface
 
-#### environment 
+### environment 
 Apache  
 PHP
 
-### on boot
+## on boot
 ~~~
 #run user apache
 shell_exec("wakeonlan.sh ".$mac_address);
 ~~~
 
-### is boot?
+## is boot?
 ~~~
 $res = shell_exec("ping -c 4 -W 5 ".$ip_address);
 $array = explode("\n",$res);
@@ -23,15 +23,15 @@ if(strripos($res,'0 received') === false){
 }
 ~~~
 
-### etc 
-#### batch
+## etc 
+### batch
 ~~~
 #Run cron
 #Need to change *.*.*. (192.168 or 172.16 or ....)
 arp_update.sh 
 ~~~
 
-#### (ip address → mac address) and (mac address → ip address)
+### (ip address → mac address) and (mac address → ip address)
 ~~~
 //ip address → mac address
 if(isset($ip_address && $ip_address != ""){
