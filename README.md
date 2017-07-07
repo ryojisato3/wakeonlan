@@ -67,27 +67,26 @@ if(isset($ip_address && $ip_address != ""){
 
 ~~~
 //mac address → ip address 
-if(isset($mac_address)){
-    if(isset($mac_address) && $mac_address != ""){
-        $ip = "";
-        #Need to change *.*.*. (192.168 or 172.16 or ....)
-        $pcs = shell_exec("nmap -sP 192.168.6.* ");
-        $pcs = shell_exec("arp -a");
-        $pcss = explode("\n",$pcs);
+if(isset($mac_address) && $mac_address != ""){
+    $ip = "";
+    #Need to change *.*.*. (192.168 or 172.16 or ....)
+    $pcs = shell_exec("nmap -sP 192.168.6.* ");
+    $pcs = shell_exec("arp -a");
+    $pcss = explode("\n",$pcs);
 
-        foreach($pcss as $value){
-            if(strripos($value,$mac_address) !== false){
-                if(preg_match("/\(([a-zA-Z0-9.]+)\)/",$value,$match) === 1){
-                    $ip = substr(substr($match[0],1),0,-1);
-                    break;
-                }
+    foreach($pcss as $value){
+        if(strripos($value,$mac_address) !== false){
+            if(preg_match("/\(([a-zA-Z0-9.]+)\)/",$value,$match) === 1){
+                $ip = substr(substr($match[0],1),0,-1);
+                break;
             }
         }
-        if($ip != ""){
-            $ping = "MAC address　{$mac_address} → IP address　{$ip}";
-        }else{
-            $ping = "get failed";
-        }
+    }
+    if($ip != ""){
+        $ping = "MAC address　{$mac_address} → IP address　{$ip}";
+    }else{
+        $ping = "get failed";
     }
 }
+
 ~~~
