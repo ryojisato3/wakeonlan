@@ -2,7 +2,12 @@
 
 Sample Wake on lan on Web interface
 
-### environment 
+## Need remote machien setting
+![firewalled](8e70e928d849800df74cd206b0d90d74.png)
+
+# Usage
+
+## environment 
 Apache  
 PHP
 
@@ -19,9 +24,13 @@ $array = explode("\n",$res);
 if(strripos($res,'0 received') === false){
     $ping = "boot success";
 }else{
-    $ping = "boot faild";
+    $ping = "boot failed";
 }
 ~~~
+
+
+## if send ping to failed
+![firewalled](cca87d1e729f8a973dbbaa4f3a69fb37.png)
 
 ## etc 
 ### batch
@@ -77,7 +86,7 @@ if(isset($mac_address)){
         if($ip != ""){
             $ping = "MAC address　{$mac_address} → IP address　{$ip}";
         }else{
-            $ping = "get faild";
+            $ping = "get failed";
         }
     }
 }
